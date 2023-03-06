@@ -74,10 +74,11 @@ shift_len_list = [20, 60, 120]
 for shift_len in shift_len_list:
     target_shift = target.shift(-shift_len)
     df_scaled_org_with_target = pd.merge(df_scaled_org, target_shift, left_index = True, right_index = True, how = 'left')
-    df_skb_score = fs.get_skb_score(df_scaled_org_with_target)
+    skb_score = fs.get_skb_score(df_scaled_org_with_target)
     
-    df_ranksum_input = fs.filter_skb_result(df_scaled_org, df_scaled_ti, df_skb_score, cutoff_dict)
-    df_ranksum_input_with_target = pd.merge(df_ranksum_input, target_shift, left_index = True, right_index = True, how = 'left')
+    df_skb_result = fs.filter_skb_result(df_scaled_org, df_scaled_ti, skb_score, cutoff_dict)
+    df_skb_result_with_target = pd.merge(df_skb_result, target_shift, left_index = True, right_index = True, how = 'left')
     
-    df_ranksum_result = fs.get_ranksum(df_ranksum_input_with_target, target_name)
-    
+    ranksum_result = fs.get_ranksum(df_skb_result_with_target, target_name)
+    df_rs = df_skb_result_with_target.loc[:,ranksum_result]
+    df_leadlag_result = fs.lead_lag_analysis(df_rs, ranksum_result, shift_len)

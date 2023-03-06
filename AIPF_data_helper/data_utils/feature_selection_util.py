@@ -35,3 +35,7 @@ def get_lasso_rank(data : pd.DataFrame = None):
 def get_corr_rank(data : pd.DataFrame = None):
     ret : pd.DataFrame = None
     return ret
+
+def lead_lag_analysis(data : pd.DataFrame = None, ranksum_result : pd.DataFrame = None, shift_len : int = None):
+    ret : pd.DataFrame = None
+    return ret
