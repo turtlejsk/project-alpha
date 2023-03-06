@@ -1,12 +1,17 @@
 import pandas as pd
 
-
 def get_skb_score(data : pd.DataFrame = None):
     ret : pd.DataFrame = None
     return ret
 
+def filter_skb_result(data : pd.DataFrame = None, data_ti : pd.DataFrame = None, skb_score : pd.DataFrame = None, cutoff_dict : dict(str, float) = None)
+    ret : pd.DataFrame = None
+    
+    skb_cutoff = cutoff_dict['skb_cutoff']
+    
+    return ret
 
-def get_ranksum(data : pd.DataFrame = None):
+def get_ranksum(data : pd.DataFrame = None, target_name : str = None):
     ret : pd.DataFrame = None
     
     xgb_rank = get_xgb_rank(data)

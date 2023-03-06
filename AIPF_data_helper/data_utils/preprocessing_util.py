@@ -49,7 +49,7 @@ def preprocess(
     
     data_filtered = filter_missmod(data_summ, data_eda, cutoff_dict)
     
-    data_outl = remove_outlier(data_filtered, cutoff_dict)
+    data_outl, data_outl_log = remove_outlier(data_filtered, cutoff_dict)
     
     ret = remove_missing(data_outl)
     
@@ -110,9 +110,9 @@ def filter_missmod(data : pd.DataFrame = None, data_eda : pd.DataFrame = None,  
 
 def remove_outlier(data : pd.DataFrame = None, cutoff_dict : dict(str, float) = None):
     ret : pd.DataFrame= None
-    ret_log : pd.DataFrame = None
+    ret_outl_log : pd.DataFrame = None
     
-    return ret, ret_log
+    return ret, ret_outl_log
 
 def remove_missing(data : pd.DataFrame = None):
     ret : pd.DataFrame = None
@@ -125,3 +125,20 @@ def generate_ti(data : pd.DataFrame = None, feat_src_map  : pd.DataFrame = None)
     ret : pd.DataFrame = None
     
     return data, ret
+
+
+def log_trans(data : pd.DataFrame = None, log_cutoff_dict : dict(str, float) = None):
+    ret : pd.DataFrame = None
+    ret_log_trans_log : pd.DataFrame = None
+    
+    return ret, ret_log_trans_log
+
+def scale_daily(data : pd.DataFrame = None, date : str = None):
+    ret : pd.DataFrame = None
+    
+    return ret
+
+def remove_outlier_secondary(data : pd.DataFrame):
+    ret : pd.DataFrame = None
+    
+    return ret

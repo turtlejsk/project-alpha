@@ -24,3 +24,8 @@ def get_ranksum(path_fs : str = None, date : str = None, shift : int = None):
     version = get_file_version(path_fs, date, 'RANKSUM')
     
     return ret
+
+def get_target(target_name : str = None):
+    ret : pd.DataFrame = None
+    
+    return ret 
